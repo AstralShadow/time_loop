@@ -3,16 +3,14 @@
 
 #include <cmath>
 
-inline double pi()
+constexpr double pi()
 {
-    static double _pi = std::atan2(0.0, -1.0);
-    return _pi;
+    return std::atan2(0.0, -1.0);
 }
 
-inline double pi_f()
+constexpr double pi_f()
 {
-    static float _pi = std::atan2(0.0f, -1.0f);
-    return _pi;
+    return std::atan2(0.0f, -1.0f);
 }
 
 #endif // INCLUDE_PI_HPP
