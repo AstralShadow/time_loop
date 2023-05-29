@@ -52,7 +52,7 @@ static void init_sdl_net()
 #endif
 
 #ifdef USE_SDL2_IMAGE
-void init_sdl_image()
+static void init_sdl_image()
 {
     if(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG)
         return;
@@ -65,7 +65,7 @@ void init_sdl_image()
 #endif
 
 #ifdef USE_SDL2_TTF
-void init_sdl_ttf()
+static void init_sdl_ttf()
 {
     if(TTF_Init()) {
         string error = "Could not init SDL.\n";
@@ -76,7 +76,7 @@ void init_sdl_ttf()
 }
 #endif
 
-void create_window()
+static void create_window()
 {
     core::window = SDL_CreateWindow(
         PROJECT_NAME,
@@ -97,12 +97,12 @@ void create_window()
     }
 }
 
-void create_renderer()
+static void create_renderer(bool vsync)
 {
     core::renderer = SDL_CreateRenderer(
         core::window,
         -1,
-        SDL_RENDERER_PRESENTVSYNC
+        vsync ? SDL_RENDERER_PRESENTVSYNC : 0
     );
 
     if(!core::renderer) {
@@ -127,8 +127,17 @@ void core::init_core(int argc, char** argv)
     init_sdl_ttf();
 #endif
 
+    bool vsync = false;
+    for(int i = 1; i < argc; ++i) {
+        if(strcmp(argv[i], "--vsync") == 0)
+            vsync = true;
+
+        if(strcmp(argv[i], "--no-vsync") == 0)
+            vsync = false;
+    }
+
     create_window();
-    create_renderer();
+    create_renderer(vsync);
 
     register_scenes();
     init_scenes(argc, argv);
