@@ -25,7 +25,7 @@ namespace game
 
         int size() const { return 20; } // radius
         int speed() const { return 400; } // px/s
-        u32 fire_delay() const { return 300; } // ms
+        u32 fire_delay() const { return 450; } // ms
 
         Timeline timeline {};
 

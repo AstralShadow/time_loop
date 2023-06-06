@@ -14,16 +14,21 @@ namespace game
     FPoint pick_dodge_direction(Soldier&);
 
     // Calculated 49 as sufficient
-    const int dodge_area = 80; // radius, px
+    const int dodge_area = 70; // radius, px
 
 
     // Approach the middle of the screen
     FPoint pick_open_direction(Soldier&);
-
     // How closely to stick to the screen center
-    const float center_position_plausability = 0.7;
+    const float center_position_plausability = 0.3;
 
-    
+    FPoint pick_battle_direction(Soldier&);
+    FPoint pick_battle_direction(Soldier&,
+                                 Soldier& target);
+    // Calculated 85 as sufficient
+    const int save_defense_distance = 90; // px
+    const int minimal_attack_distance = 130; // px
+
     // Just wander around
     FPoint pick_random_direction(Soldier&);
 }

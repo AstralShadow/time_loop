@@ -14,7 +14,7 @@ FPoint game::pick_open_direction(Soldier& entity)
     };
 
     float plausability = center_position_plausability;
-    Point edge {
+    FPoint edge {
         screen.x * plausability / 2,
         screen.y * plausability / 2
     };
