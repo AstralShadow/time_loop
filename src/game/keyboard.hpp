@@ -7,7 +7,12 @@
 
 namespace game
 {
-    void tick_keyboard(u32 ms);
+    void tick_keyboard();
+
+    const u8 keys_action[] {
+        SDL_SCANCODE_SPACE,
+        SDL_SCANCODE_RETURN
+    };
 
 #ifdef USE_ESDF
 

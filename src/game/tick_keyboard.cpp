@@ -1,9 +1,10 @@
+#include "game/tick.hpp"
 #include "game/keyboard.hpp"
 #include "game/soldier.hpp"
 #include <utility>
 
 
-void game::tick_keyboard(u32 ms)
+void game::tick_keyboard(u32)
 {
     const u8* kb_state = SDL_GetKeyboardState(nullptr);
 
@@ -37,6 +38,6 @@ void game::tick_keyboard(u32 ms)
         }
     }
 
-    player.move(direction, ms);
+    player.kb_move(direction);
 }
 
