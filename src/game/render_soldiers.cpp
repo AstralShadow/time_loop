@@ -21,6 +21,10 @@ void game::render_soldiers()
         };
 
         render_fill_circle(rnd, pos, soldier.size());
+        if(i == size) {
+            SDL_SetRenderDrawColor(rnd, 0, 0, 0, 255);
+            render_draw_circle(rnd, pos, soldier.size());
+        }
     }
 }
 

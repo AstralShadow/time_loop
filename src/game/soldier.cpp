@@ -40,7 +40,8 @@ void Soldier::kb_move(FPoint direction)
     if(last.direction == direction)
         return;
 
-    Event event;
+    Event event = timeline.state();
+    event.time = level_time;
     event.direction = direction;
     timeline.add_event(event);
 }
