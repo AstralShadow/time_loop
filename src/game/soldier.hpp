@@ -14,12 +14,17 @@ namespace game
     struct Soldier
     {
         FPoint pos;
+        float direction = 0;
+
         int size() { return 20; } // radius
         int speed() { return 500; } // px/s
 
         Timeline timeline {};
 
         void kb_move(FPoint direction);
+        void set_direction(float direction);
+        void start_fire();
+        void stop_fire();
 
         void move(u32 ms);
     };

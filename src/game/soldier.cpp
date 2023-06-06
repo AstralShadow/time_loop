@@ -32,9 +32,9 @@ static void normalize_direction(FPoint& d)
 {
     if(d.x == 0 && d.y == 0)
         return;
-    float angle = atan2(d.y, d.x);
-    d.x = cos(angle);
-    d.y = sin(angle);
+    float angle = std::atan2(d.y, d.x);
+    d.x = std::cos(angle);
+    d.y = std::sin(angle);
 }
 
 
@@ -60,4 +60,23 @@ void Soldier::move(u32 ms)
     pos.x += direction.x * ms * speed() / 1000;
     pos.y += direction.y * ms * speed() / 1000;
 }
+
+
+void Soldier::set_direction(float direction)
+{
+    this->direction = direction;
+}
+
+void Soldier::start_fire()
+{
+    this->fire_attack = true;
+}
+
+void Soldier::stop_fire()
+{
+    this->fire_attack = false;
+}
+
+
+
 
