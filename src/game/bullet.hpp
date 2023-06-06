@@ -14,9 +14,10 @@ namespace game
     {
         FPoint pos;
         FPoint direction;
+        bool player_friendly = false;
 
-        int size() { return 8; } // radius
-        int speed() { return 1000; } // px/s
+        int size() const { return 8; } // radius
+        int speed() const { return 1000; } // px/s
 
         void move(u32 ms);
     };

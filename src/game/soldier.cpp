@@ -17,8 +17,10 @@ vector<Soldier>& game::soldiers()
 Soldier& game::player()
 {
     auto& _soldiers = soldiers();
-    if(_soldiers.size() == 0)
+    if(_soldiers.size() == 0) {
         _soldiers.push_back({spawn_point()});
+        _soldiers.back().player_friendly = true;
+    }
     return _soldiers.back();
 }
 
@@ -55,6 +57,9 @@ void Soldier::kb_move(FPoint direction)
 
 void Soldier::move(u32 ms)
 {
+    if(!alive)
+        return;
+
     auto state = timeline.state();
     FPoint movement = state.movement;
 
@@ -79,7 +84,7 @@ void Soldier::stop_fire()
 }
 
 
-void Soldier::tick_action(u32 ms)
+void Soldier::tick_action(u32)
 {
     if(!alive)
         return;
@@ -102,6 +107,7 @@ void Soldier::tick_action(u32 ms)
         auto _dist = this->size() + bullet.size() + 2;
         bullet.pos.x += _dist * bullet.direction.x;
         bullet.pos.y += _dist * bullet.direction.y;
+        bullet.player_friendly = player_friendly;
         bullets().push_back(bullet);
         last_fire = level_time;
     }

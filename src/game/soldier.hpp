@@ -17,11 +17,12 @@ namespace game
         float direction = 0;
         bool alive = true;
         bool fire_attack = false;
+        bool player_friendly = false;
         u32 last_fire = 0;
 
-        int size() { return 20; } // radius
-        int speed() { return 500; } // px/s
-        u32 fire_delay() { return 300; } // ms
+        int size() const { return 20; } // radius
+        int speed() const { return 500; } // px/s
+        u32 fire_delay() const { return 300; } // ms
 
         Timeline timeline {};
 
