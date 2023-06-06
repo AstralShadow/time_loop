@@ -10,7 +10,7 @@ void game::tick_animations(u32 ms)
 
     if(reset_t > reset_p && reset_t - ms <= reset_p)
         reset_timeline();
-    reset_t -= ms;
 
+    reset_t -= ms;
 }
 

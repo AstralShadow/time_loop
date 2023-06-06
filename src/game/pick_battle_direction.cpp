@@ -49,10 +49,6 @@ pick_battle_direction(Soldier& entity)
 FPoint game::
 pick_battle_direction(Soldier& entity, Soldier& target)
 {
-    auto pos = entity.pos;
-
-    FPoint direction;
-
     auto cooldown_t = level_time - target.last_fire;
     int reaction_t = target.fire_delay() - cooldown_t;
 

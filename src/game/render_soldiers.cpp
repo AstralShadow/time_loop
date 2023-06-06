@@ -30,11 +30,26 @@ void game::render_soldiers()
             static_cast<int>(soldier.pos.x),
             static_cast<int>(soldier.pos.y)
         };
+    #ifdef __EMSCRIPTEN__
+        int radius = soldier.size();
+        SDL_Rect area {
+            pos.x - radius,
+            pos.y - radius,
+            radius * 2,
+            radius * 2
+        };
 
+
+        SDL_RenderFillRect(rnd, &area);
+
+        SDL_SetRenderDrawColor(rnd, 0, 0, 0, 255);
+        SDL_RenderDrawRect(rnd, &area);
+    #else
         render_fill_circle(rnd, pos, soldier.size());
 
         SDL_SetRenderDrawColor(rnd, 0, 0, 0, 255);
         render_draw_circle(rnd, pos, soldier.size());
+    #endif
     }
 }
 

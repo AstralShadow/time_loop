@@ -17,9 +17,10 @@ FPoint& game::spawn_point()
 
 FPoint& game::enemy_spawn_point()
 {
-    static FPoint _spawn_point {
-        screen_size().x - 200,
-        screen_size().y - 200
+    static FPoint _spawn_point;
+    _spawn_point = {
+        static_cast<float>(screen_size().x - 200),
+        static_cast<float>(screen_size().y - 200)
     };
     return _spawn_point;
 }
@@ -173,7 +174,7 @@ void Soldier::update_timeline()
     }
 
     if(fire_attack) // Decrease memory footprint
-    if(std::abs(state.direction - direction) > 0.01) {
+    if(abs(state.direction - direction) > 0.01) {
         state.direction = direction;
         updated = true;
     }

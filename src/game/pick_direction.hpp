@@ -14,7 +14,7 @@ namespace game
     FPoint pick_dodge_direction(Soldier&);
 
     // Calculated 49 as sufficient
-    const int dodge_area = 70; // radius, px
+    const int dodge_area = 60; // radius, px
 
 
     // Approach the middle of the screen

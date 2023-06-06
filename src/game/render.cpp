@@ -7,10 +7,10 @@ void game::render(scene_uid)
 {
     update_screen_size();
 
-    SDL_SetRenderDrawColor(rnd, 40, 40, 40, 255);
+    SDL_SetRenderDrawColor(rnd, 0, 0, 0, 255);
     SDL_RenderClear(rnd);
 
-    render_background();
+    //render_background();
 
     render_soldiers();
     render_bullets();
