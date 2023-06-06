@@ -12,16 +12,16 @@
 
 // Returns a value in range [a, b]
 template<int a, int b, typename T = int>
-inline int random(int seed = 0);
+inline int random(unsigned int seed = 0);
 
 // Returns a value in range [0, 1)
 template<typename T = int>
-inline int randomf(int seed = 0);
+inline int randomf(unsigned int seed = 0);
 
 
 
 template<int a, int b, typename T>
-inline std::mt19937& generator(int seed = 0)
+inline std::mt19937& generator(unsigned int seed = 0)
 {
     static std::mt19937 _generator([seed](){
         if(seed != 0)
