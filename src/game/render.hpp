@@ -8,6 +8,8 @@ namespace game
 {
     static auto& rnd = core::renderer;
 
+    void render_background();
+
     void render_soldiers();
     void render_bullets();
 
