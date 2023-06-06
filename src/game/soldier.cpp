@@ -43,40 +43,82 @@ void Soldier::kb_move(FPoint direction)
     normalize_direction(direction);
 
     auto last = timeline.state();
-    if(last.direction == direction)
+    if(last.movement == direction)
         return;
 
     Event event = timeline.state();
     event.time = level_time;
-    event.direction = direction;
+    event.movement = direction;
     timeline.add_event(event);
 }
 
 void Soldier::move(u32 ms)
 {
     auto state = timeline.state();
-    FPoint direction = state.direction;
+    FPoint movement = state.movement;
 
-    pos.x += direction.x * ms * speed() / 1000;
-    pos.y += direction.y * ms * speed() / 1000;
+    pos.x += movement.x * ms * speed() / 1000;
+    pos.y += movement.y * ms * speed() / 1000;
 }
 
 
-void Soldier::set_direction(float direction)
+void Soldier::set_direction(float _direction)
 {
-    this->direction = direction;
+    direction = _direction;
 }
 
 void Soldier::start_fire()
 {
-    this->fire_attack = true;
+    fire_attack = true;
 }
 
 void Soldier::stop_fire()
 {
-    this->fire_attack = false;
+    fire_attack = false;
 }
 
 
+void Soldier::tick_action(u32 ms)
+{
+    if(!alive)
+        return;
+
+    if(timeline.end < level_time)
+        update_timeline();
+    else
+        load_timeline();
+
+    if(fire_attack) {
+        
+    }
+}
+
+void Soldier::update_timeline()
+{
+    auto state = timeline.state();
+    bool updated = false;
+
+    if(state.fire_attack != fire_attack) {
+        state.fire_attack = fire_attack;
+        updated = true;
+    }
+
+    if(std::abs(state.direction - direction) > 0.01) {
+        state.direction = direction;
+        updated = true;
+    }
+
+    if(updated) {
+        state.time = level_time;
+        timeline.add_event(state);
+    }
+}
+
+void Soldier::load_timeline()
+{
+    auto state = timeline.state();
+    direction = state.direction;
+    fire_attack = state.fire_attack;
+}
 
 

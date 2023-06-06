@@ -16,7 +16,9 @@ namespace game
         ~Event() = default;
 
         u32 time;
-        FPoint direction {0, 0};
+        FPoint movement {0, 0};
+        bool fire_attack = false;
+        float direction = 0;
     };
 
     struct Timeline

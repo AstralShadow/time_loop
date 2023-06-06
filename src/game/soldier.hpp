@@ -15,6 +15,8 @@ namespace game
     {
         FPoint pos;
         float direction = 0;
+        bool alive = true;
+        bool fire_attack = true;
 
         int size() { return 20; } // radius
         int speed() { return 500; } // px/s
@@ -27,6 +29,11 @@ namespace game
         void stop_fire();
 
         void move(u32 ms);
+        void tick_action(u32 ms);
+
+    private:
+        void update_timeline();
+        void load_timeline();
     };
 
     vector<Soldier>& soldiers();
