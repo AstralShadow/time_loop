@@ -4,7 +4,7 @@
 
 **It's a time loop. In your favor.**
 
-**But can you survive 5 duels?**
+**But can you survive 3 duels?**
 
 Play at [itch.io](https://azcraft.itch.io/time-loop-duel).
 
