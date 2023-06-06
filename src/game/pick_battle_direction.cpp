@@ -14,7 +14,7 @@ pick_battle_direction(Soldier& entity)
     float _distance = 0;
 
     for(auto& target : soldiers()) {
-        if(&target == &entity)
+        if(entity.player_friendly == target.player_friendly)
             continue;
 
         if(!target.alive)

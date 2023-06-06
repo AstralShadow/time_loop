@@ -15,6 +15,7 @@ void game::render(scene_uid)
     render_soldiers();
     render_bullets();
 
+    render_overlay_clock();
     render_reset_screen();
 
     SDL_RenderPresent(rnd);

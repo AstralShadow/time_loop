@@ -37,6 +37,8 @@ namespace game
     };
 
 
+    const u32 duel_time = 10000;
+    const u32 duel_timeout = 25000;
     extern u32 level_time;
 
     void queue_reset_timeline();

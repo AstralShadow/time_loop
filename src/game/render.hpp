@@ -17,6 +17,8 @@ namespace game
     extern int reset_screen_time; // 1500 -> 750 -> 0
     void queue_reset_screen();
     void render_reset_screen();
+
+    void render_overlay_clock();
 }
 
 #endif // INCLUDE_GAME_RENDER_HPP

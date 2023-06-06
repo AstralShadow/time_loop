@@ -1,4 +1,5 @@
 #include "game/render.hpp"
+#include "game/tick.hpp"
 #include "utils/screen.hpp"
 
 
@@ -23,7 +24,10 @@ void game::render_reset_screen()
     for(int i = 0; i < 3; i++)
         area.x *= progress;
 
-    SDL_SetRenderDrawColor(rnd, 230, 200, 0, 255);
+    if(won_duel)
+        SDL_SetRenderDrawColor(rnd, 0, 200, 0, 255);
+    else
+        SDL_SetRenderDrawColor(rnd, 230, 200, 0, 255);
     SDL_RenderFillRect(rnd, &area);
 }
 

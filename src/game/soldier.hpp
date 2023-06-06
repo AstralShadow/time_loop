@@ -48,6 +48,9 @@ namespace game
 
     FPoint& spawn_point();
     FPoint& enemy_spawn_point();
+
+    const u8 max_enemy_count = 4; // hard coded in enemy positioning
+    extern u8 enemy_count;
 }
 
 #endif // INCLUDE_GAME_SOLDIER_HPP

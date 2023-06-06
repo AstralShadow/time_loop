@@ -9,19 +9,22 @@ void game::reset_timeline()
     level_time = 0;
 
     auto& _soldiers = soldiers();
+    int i = 0;
     for(auto& soldier : _soldiers) {
         soldier.alive = true;
-        soldier.pos = spawn_point();
+        if(i++ < enemy_count) {
+            soldier.pos = enemy_spawn_point();
+            soldier.timeline.events.clear();
+            soldier.timeline.end = 0;
+        } else {
+            soldier.pos = spawn_point();
+        }
     }
 
     // Store mouse button state
     auto fire_attack_state = player().fire_attack;
     if(player().ceased_fire)
         fire_attack_state = false;
-
-    enemy().pos = enemy_spawn_point();
-    enemy().timeline.events.clear();
-    enemy().timeline.end = 0;
 
     _soldiers.push_back({spawn_point()}); // New player
     _soldiers.back().player_friendly = true;

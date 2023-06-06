@@ -8,6 +8,7 @@ using std::cout;
 using std::endl;
 using game::Soldier;
 
+u8 game::enemy_count = 1;
 
 FPoint& game::spawn_point()
 {
@@ -36,8 +37,13 @@ static void initial_soldier_spawn()
 {
     auto& _soldiers = game::soldiers();
 
-    _soldiers.push_back({game::enemy_spawn_point()});
-    _soldiers.back().player_friendly = false;
+    FPoint spawn = game::enemy_spawn_point();
+    for(u8 i = 0; i < game::enemy_count; ++i) {
+        _soldiers.push_back({spawn});
+        _soldiers.back().player_friendly = false;
+
+        spawn.x -= 100;
+    }
 
     _soldiers.push_back({game::spawn_point()});
     _soldiers.back().player_friendly = true;

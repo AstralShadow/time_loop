@@ -2,6 +2,7 @@
 #include "game/timeline.hpp"
 #include "game/soldier.hpp"
 #include "game/do_overlap.hpp"
+#include "core/scene.hpp"
 #include <iostream>
 
 using std::cout;
@@ -11,6 +12,10 @@ using std::endl;
 void game::tick_soldiers(u32 ms)
 {
     level_time += ms;
+    if(level_time > duel_timeout) {
+        queue_reset_timeline();
+        cout << "Duel timeout" << endl;
+    }
 
     for(auto& soldier : soldiers()) {
         soldier.move(ms);
@@ -22,15 +27,23 @@ void game::tick_soldiers(u32 ms)
         queue_reset_timeline();
     }
 
-    auto _enemy = enemy();
-    if(_enemy.alive == false) {
-        // TODO win screen
+    auto& _soldiers = soldiers();
+
+
+    auto alive_enemies = false;
+    for(u8 i = 0; i < enemy_count; ++i)
+        if(_soldiers[i].alive)
+            alive_enemies = true;
+            
+    if(!alive_enemies && level_time > duel_time) {
+        won_duel = true;
+        queue_reset_timeline();
         return;
     }
 
-    auto& _soldiers = soldiers();
-    for(u32 i = 1; i < _soldiers.size(); ++i) {
-        if(do_overlap(_enemy, _soldiers[i]))
+    for(u8 e = 0; e < enemy_count; ++e)
+    for(u32 i = enemy_count; i < _soldiers.size(); ++i) {
+        if(do_overlap(_soldiers[e], _soldiers[i]))
             _soldiers[i].alive = false;
     }
 }
