@@ -64,7 +64,7 @@ pick_battle_direction(Soldier& entity, Soldier& target)
                            + delta.y * delta.y);
 
     // median human reaction time is 273ms
-    int human_delay = 200;
+    int human_delay = 220;
     if(reaction_t < human_delay && !target.fire_attack)
         reaction_t = human_delay;
 

@@ -26,7 +26,8 @@ namespace game
     FPoint pick_battle_direction(Soldier&,
                                  Soldier& target);
     // Calculated 85 as sufficient
-    const int save_defense_distance = 90; // px
+    const int save_defense_distance = 85; // px
+    // Strieve to be closer to attack faster;
     const int minimal_attack_distance = 130; // px
 
     // Just wander around

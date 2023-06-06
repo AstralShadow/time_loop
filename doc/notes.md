@@ -11,7 +11,7 @@ It's a time loop.
 # Tasks
 - [x] Implement enemy knife attack
 - [x] Implement enemy dodging
-- [ ] Implement complex movement
+- [x] Implement complex movement
 
 - [ ] Implement enemy knife throw
 
