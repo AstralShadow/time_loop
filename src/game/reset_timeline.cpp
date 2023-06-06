@@ -11,7 +11,13 @@ void game::reset_timeline()
     for(auto& soldier : _soldiers)
         soldier.pos = spawn_point();
 
-    _soldiers.push_back({spawn_point()}); // new player
-    bullets().clear();
+    // Store mouse button state
+    auto fire_attack_state = player().fire_attack;
+
+    _soldiers.push_back({spawn_point()}); // New player
+    bullets().clear(); // Clear bullets
+
+    // Restore mouse button state
+    player().fire_attack = fire_attack_state;
 }
 
