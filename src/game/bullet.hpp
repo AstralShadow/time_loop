@@ -17,7 +17,7 @@ namespace game
         bool player_friendly = false;
 
         int size() const { return 8; } // radius
-        int speed() const { return 1000; } // px/s
+        int speed() const { return 700; } // px/s
 
         void move(u32 ms);
     };

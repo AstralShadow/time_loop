@@ -9,26 +9,55 @@ using std::endl;
 using game::Soldier;
 
 
+FPoint& game::spawn_point()
+{
+    static FPoint _spawn_point {200, 200};
+    return _spawn_point;
+}
+
+FPoint& game::enemy_spawn_point()
+{
+    static FPoint _spawn_point {
+        screen_size().x - 200,
+        screen_size().y - 200
+    };
+    return _spawn_point;
+}
+
+
 vector<Soldier>& game::soldiers()
 {
     static vector<Soldier> _soldiers;
     return _soldiers;
 }
 
+static void initial_soldier_spawn()
+{
+    auto& _soldiers = game::soldiers();
+
+    _soldiers.push_back({game::enemy_spawn_point()});
+    _soldiers.back().player_friendly = false;
+
+    _soldiers.push_back({game::spawn_point()});
+    _soldiers.back().player_friendly = true;
+}
+
 Soldier& game::player()
 {
     auto& _soldiers = soldiers();
-    if(_soldiers.size() == 0) {
-        _soldiers.push_back({spawn_point()});
-        _soldiers.back().player_friendly = true;
+    if(_soldiers.size() < 2) {
+        initial_soldier_spawn();
     }
     return _soldiers.back();
 }
 
-FPoint& game::spawn_point()
+Soldier& game::enemy()
 {
-    static FPoint _spawn_point {200, 200};
-    return _spawn_point;
+    auto& _soldiers = soldiers();
+    if(_soldiers.size() < 2) {
+        initial_soldier_spawn();
+    }
+    return _soldiers.front();
 }
 
 
@@ -161,5 +190,6 @@ void Soldier::load_timeline()
     direction = state.direction;
     fire_attack = state.fire_attack;
 }
+
 
 

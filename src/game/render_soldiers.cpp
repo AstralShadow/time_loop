@@ -13,12 +13,18 @@ void game::render_soldiers()
         if(i == size)
             green = 255;
 
-        if(soldier.alive)
-            SDL_SetRenderDrawColor(rnd, 0, green,
-                                        0, 255);
-        else
-            SDL_SetRenderDrawColor(rnd, green, green,
-                                        green, 255);
+        if(soldier.alive) {
+            if(soldier.player_friendly) {
+                SDL_SetRenderDrawColor
+                    (rnd, 0, green, 0, 255);
+            } else {
+                SDL_SetRenderDrawColor
+                    (rnd, 255, 0, 0, 255);
+            }
+        } else {
+            SDL_SetRenderDrawColor
+                (rnd, green, green, green, 255);
+        }
 
         Point pos {
             static_cast<int>(soldier.pos.x),

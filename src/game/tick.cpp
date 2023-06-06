@@ -18,5 +18,6 @@ void game::tick(u32 ms, scene_uid)
 
     tick_soldiers(ms);
     tick_bullets(ms);
+    tick_enemy_controller(ms);
 }
 

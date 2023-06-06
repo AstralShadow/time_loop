@@ -19,6 +19,9 @@ void game::reset_timeline()
     if(player().ceased_fire)
         fire_attack_state = false;
 
+    enemy().pos = enemy_spawn_point();
+    enemy().timeline.events.clear();
+    enemy().timeline.end = 0;
 
     _soldiers.push_back({spawn_point()}); // New player
     _soldiers.back().player_friendly = true;

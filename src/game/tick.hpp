@@ -17,6 +17,7 @@ namespace game
 
     void tick_soldiers(u32 ms);
     void tick_bullets(u32 ms);
+    void tick_enemy_controller(u32 ms);
 
     void tick_animations(u32 ms);
 }

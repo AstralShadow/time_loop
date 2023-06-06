@@ -44,8 +44,10 @@ namespace game
 
     vector<Soldier>& soldiers();
     Soldier& player();
+    Soldier& enemy();
 
     FPoint& spawn_point();
+    FPoint& enemy_spawn_point();
 }
 
 #endif // INCLUDE_GAME_SOLDIER_HPP
