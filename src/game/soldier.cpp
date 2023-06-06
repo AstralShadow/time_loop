@@ -42,7 +42,12 @@ static void initial_soldier_spawn()
         _soldiers.push_back({spawn});
         _soldiers.back().player_friendly = false;
 
-        spawn.x -= 100;
+        if(i % 2) {
+            spawn.x -= 250;
+            spawn.y += 250;
+        } else {
+            spawn.y -= 250;
+        }
     }
 
     _soldiers.push_back({game::spawn_point()});

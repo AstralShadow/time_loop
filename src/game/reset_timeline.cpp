@@ -2,6 +2,7 @@
 #include "game/soldier.hpp"
 #include "game/bullet.hpp"
 #include "game/render.hpp"
+#include "game/tick.hpp"
 
 
 void game::reset_timeline()
@@ -10,12 +11,20 @@ void game::reset_timeline()
 
     auto& _soldiers = soldiers();
     int i = 0;
+
+    FPoint spawn = enemy_spawn_point();
     for(auto& soldier : _soldiers) {
         soldier.alive = true;
         if(i++ < enemy_count) {
-            soldier.pos = enemy_spawn_point();
+            soldier.pos = spawn;
             soldier.timeline.events.clear();
             soldier.timeline.end = 0;
+            if(i % 2) {
+                spawn.x -= 250;
+                spawn.y += 250;
+            } else {
+                spawn.y -= 250;
+            }
         } else {
             soldier.pos = spawn_point();
         }
@@ -26,8 +35,11 @@ void game::reset_timeline()
     if(player().ceased_fire)
         fire_attack_state = false;
 
-    _soldiers.push_back({spawn_point()}); // New player
-    _soldiers.back().player_friendly = true;
+    if(!won_duel) { // no double player spawn
+        _soldiers.push_back
+            ({spawn_point()}); // new player
+        _soldiers.back().player_friendly = true;
+    }
     bullets().clear(); // Clear bullets
 
     // Restore mouse button state

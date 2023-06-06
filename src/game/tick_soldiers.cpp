@@ -42,7 +42,9 @@ void game::tick_soldiers(u32 ms)
     }
 
     for(u8 e = 0; e < enemy_count; ++e)
+    if(_soldiers[e].alive)
     for(u32 i = enemy_count; i < _soldiers.size(); ++i) {
+        if(_soldiers[i].alive)
         if(do_overlap(_soldiers[e], _soldiers[i]))
             _soldiers[i].alive = false;
     }
