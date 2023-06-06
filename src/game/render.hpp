@@ -10,6 +10,11 @@ namespace game
 
     void render_soldiers();
     void render_bullets();
+
+    const int reset_screen_duration = 2000;
+    extern int reset_screen_time; // 2000 -> 1000 -> 0
+    void queue_reset_screen();
+    void render_reset_screen();
 }
 
 #endif // INCLUDE_GAME_RENDER_HPP

@@ -39,6 +39,7 @@ namespace game
 
     extern u32 level_time;
 
+    void queue_reset_timeline();
     void reset_timeline();
 }
 

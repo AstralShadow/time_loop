@@ -18,7 +18,7 @@ void game::keydown(SDL_KeyboardEvent& ev, scene_uid)
 
     for(auto code : keys_action) {
         if(scancode == code) {
-            reset_timeline();
+            queue_reset_timeline();
             cout << "Resetting timeline" << endl;
         }
     }

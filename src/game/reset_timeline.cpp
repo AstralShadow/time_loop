@@ -1,6 +1,7 @@
 #include "game/timeline.hpp"
 #include "game/soldier.hpp"
 #include "game/bullet.hpp"
+#include "game/render.hpp"
 
 
 void game::reset_timeline()
@@ -22,5 +23,11 @@ void game::reset_timeline()
 
     // Restore mouse button state
     player().fire_attack = fire_attack_state;
+}
+
+
+void game::queue_reset_timeline()
+{
+    queue_reset_screen();
 }
 
