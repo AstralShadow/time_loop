@@ -20,8 +20,11 @@ namespace game
         bool player_friendly = false;
         u32 last_fire = 0;
 
+        // Serves to provide 50ms bonus to every fire action that stays under 50ms
+        bool ceased_fire = false;
+
         int size() const { return 20; } // radius
-        int speed() const { return 500; } // px/s
+        int speed() const { return 400; } // px/s
         u32 fire_delay() const { return 300; } // ms
 
         Timeline timeline {};

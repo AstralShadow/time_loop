@@ -1,5 +1,6 @@
 #include "game/soldier.hpp"
 #include "game/bullet.hpp"
+#include "utils/screen.hpp"
 #include <iostream>
 #include <cmath>
 
@@ -65,6 +66,17 @@ void Soldier::move(u32 ms)
 
     pos.x += movement.x * ms * speed() / 1000;
     pos.y += movement.y * ms * speed() / 1000;
+
+    // Stay in screen
+    auto screen = screen_size();
+    if(pos.x - size() < 0)
+        pos.x = size();
+    if(pos.y - size() < 0)
+        pos.y = size();
+    if(pos.x + size() > screen.x)
+        pos.x = screen.x - size();
+    if(pos.y + size() > screen.y)
+        pos.y = screen.y - size();
 }
 
 
@@ -76,11 +88,13 @@ void Soldier::set_direction(float _direction)
 void Soldier::start_fire()
 {
     fire_attack = true;
+    ceased_fire = false;
+    update_timeline();
 }
 
 void Soldier::stop_fire()
 {
-    fire_attack = false;
+    ceased_fire = true;
 }
 
 
@@ -94,8 +108,14 @@ void Soldier::tick_action(u32)
     else
         load_timeline();
     
-    bool can_fire = (level_time - last_fire)
-                        > fire_delay();
+    u32 cooldown_time = level_time - last_fire;
+    bool can_fire = cooldown_time > fire_delay();
+
+    if(cooldown_time > 50 && ceased_fire) {
+        ceased_fire = false;
+        fire_attack = false;
+    }
+
     if(fire_attack && can_fire) {
         Bullet bullet {
             this->pos,

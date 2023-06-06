@@ -16,6 +16,9 @@ void game::reset_timeline()
 
     // Store mouse button state
     auto fire_attack_state = player().fire_attack;
+    if(player().ceased_fire)
+        fire_attack_state = false;
+
 
     _soldiers.push_back({spawn_point()}); // New player
     _soldiers.back().player_friendly = true;
