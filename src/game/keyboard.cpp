@@ -9,7 +9,7 @@ void game::tick_keyboard(u32 ms)
 
     auto& player = game::player();
 
-    Point direction {0, 0};
+    FPoint direction {0, 0};
 
 
     struct KeyListData
@@ -37,6 +37,6 @@ void game::tick_keyboard(u32 ms)
         }
     }
 
-    player.move(direction);
+    player.move(direction, ms);
 }
 
