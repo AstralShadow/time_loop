@@ -11,8 +11,8 @@ namespace game
     void render_soldiers();
     void render_bullets();
 
-    const int reset_screen_duration = 2000;
-    extern int reset_screen_time; // 2000 -> 1000 -> 0
+    const int reset_screen_duration = 1500;
+    extern int reset_screen_time; // 1500 -> 750 -> 0
     void queue_reset_screen();
     void render_reset_screen();
 }

@@ -10,5 +10,8 @@ void game::tick_soldiers(u32 ms)
         soldier.move(ms);
         soldier.tick_action(ms);
     }
+
+    if(!player().alive)
+        queue_reset_timeline();
 }
 
