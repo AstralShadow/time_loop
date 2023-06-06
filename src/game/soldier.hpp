@@ -13,7 +13,7 @@ namespace game
 {
     struct Soldier
     {
-        FPoint pos {0, 0};
+        FPoint pos;
         int size() { return 20; } // radius
         int speed() { return 500; } // px/s
 
@@ -26,6 +26,8 @@ namespace game
 
     vector<Soldier>& soldiers();
     Soldier& player();
+
+    FPoint& spawn_point();
 }
 
 #endif // INCLUDE_GAME_SOLDIER_HPP

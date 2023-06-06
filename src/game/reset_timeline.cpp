@@ -8,8 +8,8 @@ void game::reset_timeline()
 
     auto& _soldiers = soldiers();
     for(auto& soldier : _soldiers)
-        soldier.pos = {0, 0};
+        soldier.pos = spawn_point();
 
-    _soldiers.emplace_back(); // new player
+    _soldiers.push_back({spawn_point()}); // new player
 }
 

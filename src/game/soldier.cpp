@@ -17,8 +17,14 @@ Soldier& game::player()
 {
     auto& _soldiers = soldiers();
     if(_soldiers.size() == 0)
-        _soldiers.emplace_back();
+        _soldiers.push_back({spawn_point()});
     return _soldiers.back();
+}
+
+FPoint& game::spawn_point()
+{
+    static FPoint _spawn_point {200, 200};
+    return _spawn_point;
 }
 
 

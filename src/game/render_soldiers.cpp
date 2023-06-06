@@ -7,7 +7,7 @@ void game::render_soldiers()
 {
     auto& _soldiers = soldiers();
     u32 size = _soldiers.size();
-    int i = 0;
+    u32 i = 0;
     for(auto soldier : _soldiers) {
         u8 green = 96 + 64 * i++ / size;
         if(i == size)
@@ -21,10 +21,9 @@ void game::render_soldiers()
         };
 
         render_fill_circle(rnd, pos, soldier.size());
-        if(i == size) {
-            SDL_SetRenderDrawColor(rnd, 0, 0, 0, 255);
-            render_draw_circle(rnd, pos, soldier.size());
-        }
+
+        SDL_SetRenderDrawColor(rnd, 0, 0, 0, 255);
+        render_draw_circle(rnd, pos, soldier.size());
     }
 }
 
