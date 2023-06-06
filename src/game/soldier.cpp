@@ -103,6 +103,7 @@ void Soldier::update_timeline()
         updated = true;
     }
 
+    if(fire_attack) // Decrease memory footprint
     if(std::abs(state.direction - direction) > 0.01) {
         state.direction = direction;
         updated = true;
