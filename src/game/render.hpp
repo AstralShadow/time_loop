@@ -9,6 +9,7 @@ namespace game
     static auto& rnd = core::renderer;
 
     void render_soldiers();
+    void render_bullets();
 }
 
 #endif // INCLUDE_GAME_RENDER_HPP

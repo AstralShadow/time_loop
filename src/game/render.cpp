@@ -8,6 +8,7 @@ void game::render(scene_uid)
     SDL_RenderClear(rnd);
 
     render_soldiers();
+    render_bullets();
 
     SDL_RenderPresent(rnd);
 }

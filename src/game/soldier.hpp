@@ -17,7 +17,7 @@ namespace game
         int size() { return 20; } // radius
         int speed() { return 500; } // px/s
 
-        Timeline timeline;
+        Timeline timeline {};
 
         void kb_move(FPoint direction);
 
