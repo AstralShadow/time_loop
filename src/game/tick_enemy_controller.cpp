@@ -1,17 +1,14 @@
 #include "game/tick.hpp"
 #include "game/soldier.hpp"
+#include "game/pick_direction.hpp"
 
 
-void game::tick_enemy_controller(u32 ms)
+void game::tick_enemy_controller(u32)
 {
     auto& enemy = game::enemy();
-    // Movement policy
-    // 1 - close range bullet dodge
-    // 2 - approach time shadow
-    // 3 - random movement
-    //
-    // Possibly use dead soldiers as shields
-    //
-    // Possibly throw your knife
+    auto direction = pick_best_direction(enemy);
+    enemy.set_motion(direction);
+
+    // TODO Possibly throw your knife
 }
 

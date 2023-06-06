@@ -38,6 +38,6 @@ void game::tick_keyboard(u32)
         }
     }
 
-    player.kb_move(direction);
+    player.set_motion(direction);
 }
 

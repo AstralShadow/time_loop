@@ -71,7 +71,7 @@ static void normalize_direction(FPoint& d)
 }
 
 
-void Soldier::kb_move(FPoint direction)
+void Soldier::set_motion(FPoint direction)
 {
     normalize_direction(direction);
 

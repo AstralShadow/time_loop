@@ -29,7 +29,7 @@ namespace game
 
         Timeline timeline {};
 
-        void kb_move(FPoint direction);
+        void set_motion(FPoint direction);
         void set_direction(float direction);
         void start_fire();
         void stop_fire();
