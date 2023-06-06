@@ -16,7 +16,7 @@ inline int random(unsigned int seed = 0);
 
 // Returns a value in range [0, 1)
 template<typename T = int>
-inline int randomf(unsigned int seed = 0);
+inline float randomf(unsigned int seed = 0);
 
 
 
@@ -34,7 +34,7 @@ inline std::mt19937& generator(unsigned int seed = 0)
 
 
 template<int a, int b, typename T>
-inline int random(int seed)
+inline int random(unsigned int seed)
 {
     static std::uniform_int_distribution<>
         dist(a, b);
@@ -44,7 +44,7 @@ inline int random(int seed)
 
 
 template<typename T>
-inline int randomf(int seed)
+inline float randomf(unsigned int seed)
 {
     static std::uniform_real_distribution<float>
         dist(0, 1);
