@@ -3,6 +3,7 @@
 
 #include "utils/point.hpp"
 #include "utils/types.hpp"
+#include "game/timeline.hpp"
 #include <vector>
 
 using std::vector;
@@ -12,11 +13,15 @@ namespace game
 {
     struct Soldier
     {
-        FPoint pos;
-        int size() { return 24; } // radius
+        FPoint pos {0, 0};
+        int size() { return 20; } // radius
         int speed() { return 500; } // px/s
 
-        void move(FPoint direction, u32 time);
+        Timeline timeline;
+
+        void kb_move(FPoint direction);
+
+        void move(u32 ms);
     };
 
     vector<Soldier>& soldiers();

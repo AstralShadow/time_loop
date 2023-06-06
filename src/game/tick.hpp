@@ -7,6 +7,7 @@
 namespace game
 {
     void tick_keyboard(u32 ms);
+    void tick_soldiers(u32 ms);
 }
 
 #endif // INCLUDE_GAME_TICK_HPP

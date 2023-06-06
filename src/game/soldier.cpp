@@ -9,32 +9,48 @@ using game::Soldier;
 
 vector<Soldier>& game::soldiers()
 {
-    static vector<Soldier> _soldiers {{{0, 0}}};
+    static vector<Soldier> _soldiers;
     return _soldiers;
 }
 
 Soldier& game::player()
 {
-    return soldiers()[0];
+    auto& _soldiers = soldiers();
+    if(_soldiers.size() == 0)
+        _soldiers.emplace_back();
+    return _soldiers.back();
 }
 
 
 static void normalize_direction(FPoint& d)
 {
+    if(d.x == 0 && d.y == 0)
+        return;
     float angle = atan2(d.y, d.x);
     d.x = cos(angle);
     d.y = sin(angle);
 }
 
 
-void Soldier::move(FPoint direction, u32 time)
+void Soldier::kb_move(FPoint direction)
 {
-    if(direction.x == 0 && direction.y == 0)
-        return;
-
     normalize_direction(direction);
 
-    pos.x += direction.x * time * speed() / 1000;
-    pos.y += direction.y * time * speed() / 1000;
+    auto last = timeline.state();
+    if(last.direction == direction)
+        return;
+
+    Event event;
+    event.direction = direction;
+    timeline.add_event(event);
+}
+
+void Soldier::move(u32 ms)
+{
+    auto state = timeline.state();
+    FPoint direction = state.direction;
+
+    pos.x += direction.x * ms * speed() / 1000;
+    pos.y += direction.y * ms * speed() / 1000;
 }
 

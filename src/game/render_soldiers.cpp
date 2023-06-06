@@ -5,8 +5,15 @@
 
 void game::render_soldiers()
 {
-    for(auto soldier : soldiers()) {
-        SDL_SetRenderDrawColor(rnd, 0, 255, 0, 255);
+    auto& _soldiers = soldiers();
+    u32 size = _soldiers.size();
+    int i = 0;
+    for(auto soldier : _soldiers) {
+        u8 green = 96 + 64 * i++ / size;
+        if(i == size)
+            green = 255;
+
+        SDL_SetRenderDrawColor(rnd, 0, green, 0, 255);
 
         Point pos {
             static_cast<int>(soldier.pos.x),
