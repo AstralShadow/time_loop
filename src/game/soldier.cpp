@@ -1,4 +1,5 @@
 #include "game/soldier.hpp"
+#include "game/bullet.hpp"
 #include <iostream>
 #include <cmath>
 
@@ -87,9 +88,22 @@ void Soldier::tick_action(u32 ms)
         update_timeline();
     else
         load_timeline();
-
-    if(fire_attack) {
-        
+    
+    bool can_fire = (level_time - last_fire)
+                        > fire_delay();
+    if(fire_attack && can_fire) {
+        Bullet bullet {
+            this->pos,
+            FPoint {
+                cos(this->direction),
+                sin(this->direction)
+            }
+        };
+        auto _dist = this->size() + bullet.size() + 2;
+        bullet.pos.x += _dist * bullet.direction.x;
+        bullet.pos.y += _dist * bullet.direction.y;
+        bullets().push_back(bullet);
+        last_fire = level_time;
     }
 }
 

@@ -16,10 +16,12 @@ namespace game
         FPoint pos;
         float direction = 0;
         bool alive = true;
-        bool fire_attack = true;
+        bool fire_attack = false;
+        u32 last_fire = 0;
 
         int size() { return 20; } // radius
         int speed() { return 500; } // px/s
+        u32 fire_delay() { return 300; } // ms
 
         Timeline timeline {};
 

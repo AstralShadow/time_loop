@@ -12,7 +12,7 @@ vector<Bullet>& game::bullets()
 
 void Bullet::move(u32 ms)
 {
-    pos.x += direction.x * ms / 1000;
-    pos.y += direction.y * ms / 1000;
+    pos.x += direction.x * speed() * ms / 1000;
+    pos.y += direction.y * speed() * ms / 1000;
 }
 
