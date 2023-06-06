@@ -2,6 +2,7 @@
 #define INCLUDE_UTILS_POINT_HPP
 
 #include <SDL2/SDL_rect.h>
+#include <cmath>
 
 typedef SDL_Point Point;
 typedef SDL_FPoint FPoint;
@@ -21,7 +22,7 @@ constexpr bool operator != (Point const& a,
 constexpr bool operator == (FPoint const& a,
                             FPoint const& b)
 {
-    if(std::abs(a.x - b.x) < 0.001)
+    if(abs(a.x - b.x) < 0.001)
         if(std::abs(a.y - b.y) < 0.001)
             return true;
     return false;
