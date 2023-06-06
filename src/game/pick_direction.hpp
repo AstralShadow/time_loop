@@ -14,7 +14,7 @@ namespace game
     FPoint pick_dodge_direction(Soldier&);
 
     // Calculated 49 as sufficient
-    const int dodge_area = 57; // radius, px
+    const int dodge_area = 80; // radius, px
 
 
     // Approach the middle of the screen
@@ -22,6 +22,10 @@ namespace game
 
     // How closely to stick to the screen center
     const float center_position_plausability = 0.7;
+
+    
+    // Just wander around
+    FPoint pick_random_direction(Soldier&);
 }
 
 #endif // INCLUDE_GAME_PICK_DIRECTION_HPP

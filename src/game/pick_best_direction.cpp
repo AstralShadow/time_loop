@@ -12,11 +12,12 @@ FPoint game::pick_best_direction(Soldier& entity)
     if(open.x != 0 || open.y != 0)
         return open;
 
-    return {0, 0};
+    return pick_random_direction(entity);
 }
 
     // Movement policy
-    // 0.75 - close range bullet dodge
+    // 0.55 - close range bullet dodge
+    // 0.20 - evade player
     // 0.15 - approach center (open position)
     // 0.06 - approach enemy soldier 
     // 0.04 - random movement
