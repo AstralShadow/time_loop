@@ -13,9 +13,10 @@ FPoint game::pick_best_direction(Soldier& entity)
 }
 
     // Movement policy
-    // 0.95 - close range bullet dodge
-    // 0.03 - approach enemy soldier
-    // 0.02 - random movement
+    // 0.75 - close range bullet dodge
+    // 0.15 - approach center
+    // 0.06 - approach enemy soldier 
+    // 0.04 - random movement
     //
     // Possibly use dead soldiers as shields
     //

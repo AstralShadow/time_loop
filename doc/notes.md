@@ -10,7 +10,8 @@ It's a time loop.
 
 # Tasks
 - [x] Implement enemy knife attack
-- [ ] Implement enemy dodging
+- [x] Implement enemy dodging
+- [ ] Implement complex movement
 
 - [ ] Implement enemy knife throw
 
