@@ -18,6 +18,20 @@ constexpr bool operator != (Point const& a,
     return !(a == b);
 }
 
+constexpr bool operator == (FPoint const& a,
+                            FPoint const& b)
+{
+    if(std::abs(a.x - b.x) < 0.001)
+        if(std::abs(a.y - b.y) < 0.001)
+            return true;
+    return false;
+}
+
+constexpr bool operator != (FPoint const& a,
+                            FPoint const& b)
+{
+    return !(a == b);
+}
 
 constexpr Point operator + (Point a, Point const& b)
 {
