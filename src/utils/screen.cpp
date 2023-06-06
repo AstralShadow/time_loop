@@ -14,7 +14,7 @@ EM_JS(int, canvas_get_height, (), {
 static auto& rnd = core::renderer;
 #endif
 
-static Point _screen_size {0, 0};
+static Point _screen_size {WINDOW_WIDTH, WINDOW_HEIGHT};
 
 
 Point screen_size()
@@ -29,7 +29,7 @@ void update_screen_size()
 
 #ifdef __EMSCRIPTEN__
     screen.x = canvas_get_width();
-    screen.x = canvas_get_height();
+    screen.y = canvas_get_height();
     SDL_SetWindowSize(core::window, screen.x, screen.y);
 #else
     SDL_GetRendererOutputSize(rnd, &screen.x, &screen.y);
