@@ -16,8 +16,8 @@ Dependencies:
 
 ## Linux
 
-    $ git clone https://github.com/AstralShadow/time-loop.git
-    $ cd time-loop
+    $ git clone https://github.com/AstralShadow/time_loop.git
+    $ cd time_loop
     $ make -j$(nproc)
     $ make run
 
@@ -26,8 +26,8 @@ Install and prepare the
 [Emscripten SDK](https://github.com/emscripten-core/emsdk).
 Use make with makefile\_ems to compile the game.
 
-    $ git clone https://github.com/AstralShadow/time-loop.git
-    $ cd time-loop 
+    $ git clone https://github.com/AstralShadow/time_loop.git
+    $ cd time_loop 
     $ make -j ${nrpoc} -f makefile_ems
 
 Host `bin_ems` and open index.html in browser.

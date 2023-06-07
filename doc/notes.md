@@ -15,6 +15,6 @@ It's a time loop.
 
 - [ ] Implement enemy knife throw
 
-- [ ] Win screen
+- [x] Win screen
 - [x] Limit time loop to 30 seconds (needs UI)
 
