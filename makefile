@@ -1,4 +1,4 @@
-NAME=time_loop_duel_jam_version.x86_64
+NAME=time_loop_duel.x86_64
 VERSION_MAJOR=0
 VERSION_MINOR=0
 
